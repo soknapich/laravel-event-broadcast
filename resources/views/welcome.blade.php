@@ -60,7 +60,9 @@
 </head>
 
 <body>
-    <h2>Waiting recive somthing</h2>
+    <div class="text-center">
+        <h2>Waiting recieve message...</h2>
+    </div>
     <div id="response" class="chat-container message-scroll">
     </div>
     <script type="module">
@@ -77,13 +79,22 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Accept'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // ✅ User clicked "Yes"
+
+                    const responseElement = document.querySelector('#response');
+                    responseElement.innerHTML += `
+                        <div class="message other">
+                            <div class="bubble"> ${event.name} :${event.email}</div>
+                        </div>`;
+                    // Call your delete function or make an API request here
+                } else {
+                    // ❌ User clicked "Cancel" or closed the dialog
+                    console.log('Cancelled.');
+                }
             });
-            
-            const responseElement = document.querySelector('#response');
-            responseElement.innerHTML += `
-            <div class="message other">
-                <div class="bubble"> ${event.name} :${event.email}</div>
-            </div>`;
+
         })
     </script>
 

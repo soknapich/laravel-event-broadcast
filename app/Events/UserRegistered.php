@@ -29,7 +29,7 @@ class UserRegistered implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('registered-user');
+        return new Channel('registered-user');
     }
 
     /**

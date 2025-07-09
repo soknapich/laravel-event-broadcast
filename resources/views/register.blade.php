@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <h3 class="title fw-bold border-bottom pb-3">Registration Form - Event Broadcasting Using Reverb
                             in Laravel 11</h3>
-                        <form action="{{ route('user.register') }}" method="POST" class="mt-4">
+                        <form action="{{ route('registerUser') }}" method="get" class="mt-4">
                             @csrf
                             <div class="row row-space mb-3">
                                 <div class="col-6">
@@ -94,18 +94,7 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
 
-    <script type="module">
-        console.log(window.Echo);
-        window.Echo.private('registered-user').listen('.user-created', (event) => {
-            console.log(event);
-            const responseElement = document.querySelector('#response');
 
-            responseElement.innerHTML += `<div class="alert alert-info">
-                A new user has been registered with Name : ${event.name} and
-                Email : ${event.email}
-            </div>`;
-        })
-    </script>
 </body>
 
 </html>

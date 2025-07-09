@@ -1,7 +1,9 @@
 import Echo from 'laravel-echo';
-
+import Swal from 'sweetalert2';
 import Pusher from 'pusher-js';
+
 window.Pusher = Pusher;
+window.Swal = Swal;
 
 window.Echo = new Echo({
     broadcaster: 'reverb',

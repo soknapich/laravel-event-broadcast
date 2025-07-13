@@ -1,10 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'php:8.2-cli'  // or any other PHP image
+        }
+    }
 
     stages {
-        stage('Test Composer') {
+        stage('Check PHP') {
             steps {
-                sh 'composer --version'
+                sh 'php -v'
             }
         }
     }

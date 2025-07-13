@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'composer:2'
-        }
-    }
+    agent any
 
     stages {
         stage('Test Composer') {

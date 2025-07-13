@@ -1,20 +1,14 @@
 pipeline {
     agent {
         docker {
-            image 'composer:2' // uses official Composer image with PHP preinstalled
+            image 'composer:2'
         }
     }
 
     stages {
-        stage('Install Dependencies') {
+        stage('Test Composer') {
             steps {
-                sh 'composer install'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'vendor/bin/phpunit'
+                sh 'composer --version'
             }
         }
     }

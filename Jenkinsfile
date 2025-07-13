@@ -1,17 +1,11 @@
 pipeline {
-    agent any
-
-    environment {
-        COMPOSER_CACHE_DIR = "$HOME/.composer/cache"
+    agent {
+        docker {
+            image 'composer:2' // uses official Composer image with PHP preinstalled
+        }
     }
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                echo 'Repository already cloned by Jenkins'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'composer install'
@@ -20,7 +14,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh './vendor/bin/phpunit'
+                sh 'vendor/bin/phpunit'
             }
         }
     }
